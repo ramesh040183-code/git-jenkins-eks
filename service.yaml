@@ -12,7 +12,7 @@ spec:
   selector:
     # Loadbalance traffic across Pods matching
     # this label selector
-    app: 
+    app: jenkins-eks-app
   # Create an HA proxy in the cloud provider
   # with an External IP address - *Only supported
   # by some cloud providers*
