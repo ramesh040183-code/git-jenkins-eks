@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-eks-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-eks-app
+  template:
+    metadata:
+      labels:
+        app: jenkins-eks-app
+    spec:
+      containers:
+        - name: jenkins-eks-container
+          image: ramesh040183/static-website:18
+          ports:
+            - containerPort: 80
