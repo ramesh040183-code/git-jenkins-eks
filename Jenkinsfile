@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout Code from GitLab') {
             steps {
                 git branch: 'main',
-                    url: 'https://gitlab.com/SOFTAPP-TECHNOLOGIES/k8s-jenkins-cicd-pipeline.git'
+                    url: 'https://github.com/ramesh040183-code/git-jenkins-eks.git'
             }
         }
 
@@ -42,9 +42,9 @@ pipeline {
             steps {
                 powershell '''
                 $image = "$env:IMAGE_NAME`:$env:IMAGE_TAG"
-                (Get-Content k8s\\deployment.yaml) `
+                (Get-Content deployment.yaml) `
                   -replace "IMAGE_NAME", $image |
-                Set-Content k8s\\deployment.yaml
+                Set-Content deployment.yaml
                 '''
             }
         }
@@ -57,8 +57,8 @@ pipeline {
 
                     kubectl get nodes || exit /b 1
 
-                    kubectl apply -f k8s/deployment.yaml || exit /b 1
-                    kubectl apply -f k8s/service.yaml || exit /b 1
+                    kubectl apply -f deployment.yaml || exit /b 1
+                    kubectl apply -f service.yaml || exit /b 1
                     '''
                 }
             }
@@ -66,3 +66,4 @@ pipeline {
 
     }
 }
+
