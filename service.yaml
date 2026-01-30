@@ -7,8 +7,8 @@ spec:
   ports:
     # Accept traffic sent to port 80
     - name: http
-      port: 6789
-      targetPort: 80
+      port: 80
+      targetPort: 6789
   selector:
     # Loadbalance traffic across Pods matching
     # this label selector
